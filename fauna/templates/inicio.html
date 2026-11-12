@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AFU · Asistente de Fauna Urbana</title>
+  <link rel="stylesheet" href="{% static 'afu.css' %}?v=2">
+  <script defer src="{% static 'afu.js' %}?v=2"></script>
+</head>
+<body>
+<main>
+  <header><span class="marca" aria-hidden="true">aƒu</span><div><h1>AFU</h1><p>Asistente de Fauna Urbana</p></div></header>
+  <section id="historial" role="log" aria-label="Conversación" tabindex="0">
+    <article class="afu"><b>AFU</b><p>{% if animal %}Podemos seguir hablando sobre el animal identificado: {{ animal.nombre }}. También puedes adjuntar otra foto.{% else %}Hola, soy AFU. Adjunta una foto del animal que encontraste. Intentaré identificarlo y podrás preguntarme sobre él.{% endif %}</p></article>
+  </section>
+  <footer>
+    <form id="foto" action="{% url 'identificar' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="imagen" id="imagen" accept="image/*" class="oculto">
+      <label for="imagen" class="adjuntar">＋ Adjuntar foto</label>
+      <div id="borrador" hidden><img id="mini" alt="Vista previa de la foto seleccionada"><div><button>Analizar foto</button><button type="button" id="quitar">Quitar</button></div></div>
+    </form>
+    <form id="chat" action="{% url 'preguntar' %}" data-activo="{% if animal %}1{% else %}0{% endif %}">
+      <input name="mensaje" aria-label="Tu mensaje" maxlength="2000" placeholder="Escribe tu pregunta…" required>
+      <button>Enviar ↑</button>
+    </form>
+    <p id="estado" role="status"></p>
+  </footer>
+</main>
+</body></html>

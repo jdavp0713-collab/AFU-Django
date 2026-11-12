@@ -1,0 +1,34 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 3vh 16px; background: #e6eee8; color: #193e34; font: 16px/1.5 "Segoe UI", sans-serif; }
+main { width: min(100%, 850px); height: 94vh; height: 94dvh; margin: auto; display: flex; flex-direction: column; background: #fafbf7; border: 1px solid #c5d4ca; border-radius: 22px; overflow: hidden; box-shadow: 0 15px 60px #25473119; }
+header { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #183f35; color: white; }
+.marca { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 17px; color: #183f35; background: #dfeda5; font: italic bold 25px Georgia, serif; }
+h1, header p, article p { margin: 0; }
+h1 { font-size: 24px; line-height: 1.15; }
+header p { color: #d7e6db; font-size: 14px; }
+#historial { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+article { flex: none; max-width: min(83%, 560px); padding: 12px 16px; overflow-wrap: anywhere; }
+article p { white-space: pre-wrap; }
+article b { display: block; font-size: 12px; margin-bottom: 4px; }
+.afu { align-self: flex-start; background: #e5eee4; border-radius: 2px 18px 18px; }
+.usuario { align-self: flex-end; background: #245a4c; color: white; border-radius: 18px 2px 18px 18px; }
+article img { display: block; max-width: 100%; max-height: 250px; border-radius: 10px; }
+footer { padding: 14px 22px; background: white; border-top: 1px solid #d4dfd6; }
+button, .adjuntar { display: inline-block; border: 0; border-radius: 12px; padding: 10px 15px; font-size: 14px; line-height: 1.4; font-family: inherit; font-weight: 600; cursor: pointer; }
+button { background: #245a4c; color: white; }
+.adjuntar, #quitar { background: #edf2e9; color: #285244; }
+button:hover:enabled, .adjuntar:hover { filter: brightness(.93); }
+button:disabled, input:disabled + label { opacity: .5; cursor: default; }
+:focus-visible, #imagen:focus-visible + label { outline: 3px solid #ac7814; outline-offset: 2px; }
+.oculto { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+#borrador:not([hidden]) { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+#mini { width: 80px; height: 70px; object-fit: contain; background: #edf2e9; border-radius: 8px; }
+#chat { display: flex; gap: 8px; margin-top: 10px; }
+#chat input { flex: 1; min-width: 0; padding: 12px; border: 1px solid #adbfaf; border-radius: 12px; font: inherit; }
+#estado { margin: 5px 0 0; font-size: 13px; color: #445e50; }
+@media (max-width: 600px) {
+  body { padding: 0; }
+  main { height: 100vh; height: 100dvh; border: 0; border-radius: 0; }
+  #historial, header, footer { padding: 14px; }
+  article { max-width: 90%; }
+}
